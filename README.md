@@ -1,1 +1,2 @@
-# sp21-202-husky-haven
+# Team Project (Replace with your Team Name and Journal)
+
