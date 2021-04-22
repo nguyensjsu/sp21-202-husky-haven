@@ -7,8 +7,8 @@
 
 <h3>Members</h3>
 <ul>
-  <li>Kevin Duong</li>
   <li>...</li>
+  <li>Kevin Duong</li>
   <li>...</li>
   <li>...</li>
   <li>Benoit Yen</li>
