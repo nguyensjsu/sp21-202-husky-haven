@@ -9,6 +9,9 @@
 <ul>
   <li>Kevin Duong</li>
   <li>...</li>
+  <li>...</li>
+  <li>...</li>
+  <li>Benoit Yen</li>
 </ul>
 
 <h3>Key Features</h3>
