@@ -3,11 +3,11 @@
 <h2>Doodle Jump (Variation)</h2>
 
 <h3>Summary</h3>
-<p>An infinite vertical scroller (similar to doodle jump) with unique power ups, goofy characters, etc..</p>
+<p>An infinite vertical scroller (similar to doodle jump) with unique power ups, goofy characters, etc. made in the Greenfoot game engine.</p>
 
 <h3>Members</h3>
 <ul>
-  <li>...</li>
+  <li>Nathan Diamond</li>
   <li>Kevin Duong</li>
   <li>...</li>
   <li>...</li>
