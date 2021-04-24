@@ -10,7 +10,7 @@
   <li>Nathan Diamond</li>
   <li>Kevin Duong</li>
   <li>Vaibhav Jajodia</li>
-  <li>...</li>
+  <li>Deepak Vellore Karunamoorthy</li>
   <li>Benoit Yen</li>
 </ul>
 
