@@ -31,6 +31,10 @@
         Shooting Power (Flower Icon)
         <ul><li>Character shoots projectiles allowing him to kill enemies for x amount of time.</li></ul>
       </li>
+       <li>
+        Invincibility Power(Star Icon)
+        <ul><li>Character automatically moves top without jump upon receiving the power for x amount of time.</li></ul>
+      </li>
      </ul>
   </li>
   
