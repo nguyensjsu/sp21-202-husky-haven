@@ -9,7 +9,7 @@
 <ul>
   <li>Nathan Diamond</li>
   <li>Kevin Duong</li>
-  <li>...</li>
+  <li>Vaibhav Jajodia</li>
   <li>...</li>
   <li>Benoit Yen</li>
 </ul>
@@ -27,8 +27,7 @@
         SuperSize Power (Hamburger Icon)
         <ul><li>Character doubles in size and weight allowing him to jump a greater distance for x amount of time.</li></ul>
       </li>
-      
-         <li>
+      <li>
         Shopting Power (Flower Icon)
         <ul><li>Character shoots projectiles allowing him to kill enemies for x amount of time.</li></ul>
       </li>
