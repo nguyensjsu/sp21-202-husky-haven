@@ -1,2 +1,4 @@
 #OS files
 *.DS_Store
+*.ctxt
+*.class
