@@ -5,6 +5,7 @@ public class GameScreen extends AbstractScreen {
 
     private List<Actor> actors;
     Player player;
+    Enemy enemy;
 
     int transparency = 0;
     int scrollSpeed;
@@ -18,14 +19,13 @@ public class GameScreen extends AbstractScreen {
     int startX = 600;
     int startY = 50;
 
-
     public GameScreen(GameWorld world) {
         super(world, Color.BLUE);
         int centerX = world.WIDTH / 2;
         player = new Player(true, this);
         actors = Arrays.asList(
-             player,
-             new ground(false,this)
+            player,
+            new ground(false,this)
         );
     }
 
@@ -54,6 +54,11 @@ public class GameScreen extends AbstractScreen {
             world.removeObjects(actors);
             world.setScreen(ScreenName.GAME_OVER);
         }
+        if(player.y % 100 == 0){
+            enemy = new Enemy(this, world);
+            world.addObject(enemy, 0, player.y + Greenfoot.getRandomNumber(400));
+        }
+
         for (Actor actor : actors)
             if (Greenfoot.mouseClicked(actor))
                 if (actor instanceof IClickable)
