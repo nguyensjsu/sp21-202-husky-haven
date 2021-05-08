@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
+    private GameScreen gameScreen;
     float ys, xs;
     int x,y;
     boolean canMove;
@@ -24,9 +25,10 @@ public class Player extends Actor
         y = getY();
     }
 
-    public Player(boolean movable) {
+    public Player(boolean movable, GameScreen screen) {
         left.mirrorHorizontally();
         canMove = movable;
+        gameScreen = screen;
     }
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
@@ -37,9 +39,9 @@ public class Player extends Actor
         x = getX();
         y = getY();
 
-        ((GameWorld) getWorld()).doodleX = getX();
+        gameScreen.doodleX = getX();
 
-        if(((GameWorld) getWorld()).fall==false)
+        if(gameScreen.fall==false)
         {
             bounce();
         }
@@ -59,7 +61,7 @@ public class Player extends Actor
 
         if(y>1600)
             fall();
-        ((GameWorld) getWorld()).height = hits;
+        gameScreen.height = hits;
 
         scout();
     }
@@ -81,27 +83,27 @@ public class Player extends Actor
     {
         if(y<=200 & y>100)
         {
-            ((GameWorld) getWorld()).scrollSpeed = (int) -ys;
-            ((GameWorld) getWorld()).scroll = true;
+            gameScreen.scrollSpeed = (int) -ys;
+            gameScreen.scroll = true;
             hits++;
         }
         else if(y<=100)
         {
-            ((GameWorld) getWorld()).scrollSpeed = (int) -ys*2;
-            ((GameWorld) getWorld()).scroll = true;
+            gameScreen.scrollSpeed = (int) -ys*2;
+            gameScreen.scroll = true;
             hits++;
         }
 
         else
         {
-            ((GameWorld) getWorld()).scroll = false;
+            gameScreen.scroll = false;
         }
     }
 
     public void fall()
     {
-        ((GameWorld) getWorld()).fall = true;
-        ((GameWorld) getWorld()).scrollSpeed = (int) -ys;
+        gameScreen.fall = true;
+        gameScreen.scrollSpeed = (int) -ys;
     }
 
     public void wrapAround()

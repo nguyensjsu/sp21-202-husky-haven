@@ -10,19 +10,6 @@ public class GameWorld extends World {
     private AbstractScreen currentScreen;
     private ScreenName currentIndex;
 
-
-    int transparency = 0;
-    int scrollSpeed;
-    boolean scroll;
-    boolean fall;
-    boolean ended;
-
-    int height = 0;
-    int doodleX;
-    
-    int startX = 600;
-    int startY = 50;
-
     public GameWorld() {
         super(WIDTH, HEIGHT, 1, false);
         screenList = new AbstractScreen[] {
