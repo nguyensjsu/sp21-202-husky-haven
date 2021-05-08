@@ -33,6 +33,11 @@ public class GameScreen extends AbstractScreen {
         world.setPaintOrder(Player.class, Button.class);
         world.addObject(player, this.startX,this.startY);
 
+        //temp powerup additions for initial game screen
+        //need score to generate after certain height
+        world.addObject(new PowerUp(), world.WIDTH/2 + 100, world.HEIGHT/2 + 100);
+        world.addObject(new PowerUp(), world.WIDTH/2 - 100, world.HEIGHT/2 - 100);
+
         world.addObject(actors.get(0), 0, 0);
         int groundNum = 15;
         for( int x = 1; x < actors.size(); x++) {
