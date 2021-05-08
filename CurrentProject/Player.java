@@ -13,8 +13,8 @@ public class Player extends Actor
     int x,y;
     boolean canMove;
     GreenfootImage left = new GreenfootImage("../images/doodler.png");
-
     GreenfootImage right = new GreenfootImage("../images/doodler.png");
+    GreenfootImage shooting = new GreenfootImage("shooting.png");
     int scrollSpeed;
     int hits = 0;
 
@@ -27,6 +27,7 @@ public class Player extends Actor
 
     public Player(boolean movable, GameScreen screen) {
         left.mirrorHorizontally();
+        shooting.scale(25,40);
         canMove = movable;
         gameScreen = screen;
     }
@@ -147,6 +148,11 @@ public class Player extends Actor
         if(!Greenfoot.isKeyDown("left") & !Greenfoot.isKeyDown("right") & xs != 0)
         {
             xs = 0;
+        }
+        if(Greenfoot.isKeyDown("space") & getWorld().getObjects(AbstractProjectile.class).isEmpty())
+        {
+            setImage(shooting);
+            getWorld().addObject(new AbstractProjectile(), x, y);
         }
         
 
