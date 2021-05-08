@@ -1,20 +1,20 @@
 import greenfoot.*;
 
-public class AbstractProjectile extends Actor{
-	
+public class AbstractProjectile extends Actor implements IProjectileShooter{
+
 	boolean removed;
 
 	public AbstractProjectile()
 	{
 	    removed = false;
 	}
-	public void act() 
+	public void act()
 	{
 	    if(removed){return;}
-	    move();
-	}   
+	    fireProjectile();
+	}
 
-	public void move()
+	public void fireProjectile()
 	{
 	    if(getY()<=0)
 	    {
