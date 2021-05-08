@@ -76,7 +76,11 @@ public class Player extends Actor
 
         public void bounce()
     {
-
+        ground Ground = (ground) getOneIntersectingObject(ground.class);
+        if(Ground != null & ys > 0)
+        {
+            ys = -5;
+        }
     }
 
         public void scrollUp()
