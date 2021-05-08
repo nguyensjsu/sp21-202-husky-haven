@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class AbstractProjectile implements IProjectileShooter extends Actor{
+public class AbstractProjectile extends Actor{
 	
 	boolean removed;
 
@@ -14,7 +14,7 @@ public class AbstractProjectile implements IProjectileShooter extends Actor{
 	    move();
 	}   
 
-	public void fireProjectile()
+	public void move()
 	{
 	    if(getY()<=0)
 	    {
