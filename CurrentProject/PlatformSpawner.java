@@ -6,7 +6,7 @@ public class PlatformSpawner extends AbstractSpawner {
     private final int MAX_PLATFORMS = 12;
     
     public PlatformSpawner(GameWorld world) {
-        super(world, 50, 100);
+        super(world, 100, 100);
     }
     
     public void initialSpawn() {

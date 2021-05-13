@@ -4,13 +4,14 @@ public class PowerupSpawner extends AbstractSpawner {
     
     private FeatherPowerup featherPowerup = new FeatherPowerup();
     private FirePowerup firePowerup = new FirePowerup();
-    private AbstractPowerup powerups[] = {featherPowerup, firePowerup};
+    private BalloonPowerup balloonPowerup = new BalloonPowerup();
+    private AbstractPowerup powerups[] = {featherPowerup, firePowerup, balloonPowerup}; 
     public PowerupSpawner(GameWorld world) {
         super(world, 200, 50);
     }
     
     public AbstractSpawnable getRandomSpawnable() {
-        int rand = Greenfoot.getRandomNumber(powerups.length - 1);
+        int rand = Greenfoot.getRandomNumber(powerups.length);
         return powerups[rand];
     }
 }
