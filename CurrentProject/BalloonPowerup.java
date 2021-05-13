@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 public class BalloonPowerup extends AbstractPowerup {
-
+    
     public BalloonPowerup() {
     }
 

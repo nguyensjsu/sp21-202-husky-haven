@@ -9,10 +9,10 @@ public class FirePowerup extends AbstractPowerup {
         player.setShootingStrategy(new FireShootingStrategy(getWorld()));
         new java.util.Timer().schedule(
             new java.util.TimerTask() {
-              @Override
-              public void run() {
-                  player.setShootingStrategy(new DefaultShootingStrategy(getWorld()));
-              }
+                @Override
+                public void run() {
+                    player.setShootingStrategy(new DefaultShootingStrategy(getWorld()));
+                }
             },
             5000
         );
