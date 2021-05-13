@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class Player extends Actor {
     
-    private final float GRAVITY = 0.15f;
+    private float GRAVITY = 0.15f;
     private final float MAX_SPEED = 5.0f;
     private final float X_ACCEL = 0.25f;
     private final long FIRE_RATE = 100;
@@ -55,6 +55,14 @@ public class Player extends Actor {
         ySpeed = -force;
     }
     
+    public void setGravity(float force) {
+        GRAVITY = force;
+    }
+    
+    public float getGravity(){
+        return GRAVITY;
+    }
+    
     private void handleInput() {
         boolean right = Greenfoot.isKeyDown("right");
         boolean left = Greenfoot.isKeyDown("left");
@@ -75,6 +83,14 @@ public class Player extends Actor {
             shootingStrategy.fire(this, true);
             setImage(shootingImage);
         }
+    }
+    
+    public float getYSpeed() {
+        return ySpeed;
+    }
+    
+    public void setYSpeed(float speed) {
+        ySpeed = speed;
     }
     
     private void applyGravity() {
