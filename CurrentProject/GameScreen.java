@@ -2,70 +2,81 @@ import greenfoot.*;
 import java.util.*;
 
 public class GameScreen extends AbstractScreen {
-
-    private List<Actor> actors;
-    Player player;
-    Enemy enemy;
-
-    int transparency = 0;
-    int scrollSpeed;
-    boolean scroll;
-    boolean fall;
-    boolean ended;
-
-    int height = 0;
-    int doodleX;
-
-    int startX = 600;
-    int startY = 50;
-
+    
+    private final int START_X = 300;
+    private final int START_Y = 450;
+    private final int TOP_PADDING = 150;
+    
+    private AbstractSpawner[] spawners = null;
+    private Player player;
+    private ScoreDisplay scoreDisplay;
+    private boolean isActive;
+    private int scoreHeight;
+    
+    
     public GameScreen(GameWorld world) {
-        super(world, Color.BLUE);
-        int centerX = world.WIDTH / 2;
-        player = new Player(true, this);
-        actors = Arrays.asList(
-            player,
-            new ground(false,this)
-        );
+        super(world, Color.GRAY);
     }
-
+    
     public void activate() {
-        world.setPaintOrder(Player.class, Button.class);
-        world.addObject(player, this.startX,this.startY);
-
-        //temp powerup additions for initial game screen
-        //need score to generate after certain height
-        world.addObject(new PowerUp(), world.WIDTH/2 + 100, world.HEIGHT/2 + 100);
-        world.addObject(new PowerUp(), world.WIDTH/2 - 100, world.HEIGHT/2 - 100);
-
-        world.addObject(actors.get(0), 0, 0);
-        int groundNum = 15;
-        for( int x = 1; x < actors.size(); x++) {
-            world.addObject(actors.get(x),0 + (55 * x), world.HEIGHT);
-        }
-
         super.activate();
+        world.setPaintOrder(ScoreDisplay.class,
+                            Player.class,
+                            AbstractPowerup.class,
+                            AbstractProjectile.class,
+                            Platform.class,
+                            AbstractEnemy.class);
+        
+        scoreDisplay = new ScoreDisplay("Score: ", 150, 20, 20);
+        world.addObject(scoreDisplay, 525, 770);
+        
+        isActive = true;
+        scoreHeight = 0;
+        
+        player = new Player(world);
+        world.addObject(player, START_X, START_Y);
+        
+        spawners = new AbstractSpawner[] {
+            new PlatformSpawner(world),
+            new EnemySpawner(world),
+            new PowerupSpawner(world)
+        };
+        
+        for (AbstractSpawner spawner : spawners)
+            spawner.initialSpawn();
     }
-
+    
     public void act() {
-        if(player.y > 800) {
-            player.ys = 0;
-            player.xs = 0;
-            world.removeObjects(actors);
+        int playerY = player.getY();
+        if (playerY > world.HEIGHT || player.isDead())
+            endGame();
+        
+        if (!isActive) {
+            world.setLastScore(scoreHeight);
             world.setScreen(ScreenName.GAME_OVER);
+            return;
         }
-        if(player.y % 100 == 0){
-            enemy = new Enemy(this, world);
-            world.addObject(enemy, 0, player.y + Greenfoot.getRandomNumber(400));
+        
+        if (playerY < TOP_PADDING) {
+            int changeY = TOP_PADDING - playerY;
+            scoreHeight += changeY;
+            scoreDisplay.updateScore(scoreHeight);
+            scroll(changeY);
         }
-
-        for (Actor actor : actors)
-            if (Greenfoot.mouseClicked(actor))
-                if (actor instanceof IClickable)
-                    ((IClickable)actor).onClick();
     }
-
-    public void clear() {
-        world.removeObjects(actors);
+    
+    private void scroll(int changeY) {
+        player.setLocation(player.getX(), TOP_PADDING);
+        
+        for (AbstractSpawnable spawned : world.getObjects(AbstractSpawnable.class))
+            spawned.scroll(changeY);
+        
+        if (spawners != null)
+            for (AbstractSpawner spawner : spawners)
+                spawner.scroll(changeY);
+    }
+    
+    public void endGame() {
+        isActive = false;
     }
 }

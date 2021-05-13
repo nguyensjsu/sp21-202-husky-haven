@@ -1,160 +1,94 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Player here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Player extends Actor
-{
-    private GameScreen gameScreen;
-    float ys, xs;
-    int x,y;
-    boolean canMove;
-    GreenfootImage left = new GreenfootImage("../images/doodler.png");
-    GreenfootImage right = new GreenfootImage("../images/doodler.png");
-    GreenfootImage shooting = new GreenfootImage("shooting.png");
-    int scrollSpeed;
-    int hits = 0;
-
-
-    protected void addedToWorld(World world)
-    {
-        x = getX();
-        y = getY();
+public class Player extends Actor {
+    
+    private final float GRAVITY = 0.15f;
+    private final float MAX_SPEED = 5.0f;
+    private final float X_ACCEL = 0.25f;
+    private final long FIRE_RATE = 100;
+    
+    private float xSpeed = 0.0f, ySpeed = 0.0f;
+    private int xLoc = 0, yLoc = 0;
+    private boolean dead = false;
+    
+    private GreenfootImage leftImage = new GreenfootImage("doodler.png");
+    private GreenfootImage rightImage = new GreenfootImage("doodler.png");
+    private GreenfootImage shootingImage = new GreenfootImage("shooting.png");
+    
+    private AbstractShootingStrategy shootingStrategy;
+    
+    
+    public Player(GameWorld world) {
+        leftImage.mirrorHorizontally();
+        shootingImage.scale(30, 40);
+        
+        setShootingStrategy(new DefaultShootingStrategy(world));
     }
-
-    public Player(boolean movable, GameScreen screen) {
-        left.mirrorHorizontally();
-        shooting.scale(25,40);
-        canMove = movable;
-        gameScreen = screen;
+    
+    public void setShootingStrategy(AbstractShootingStrategy shootingStrategy) {
+        this.shootingStrategy = shootingStrategy;
     }
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        x = getX();
-        y = getY();
-
-        gameScreen.doodleX = getX();
-
-        if(gameScreen.fall==false)
-        {
-            bounce();
+    
+    public boolean isDead() {
+        return dead;
+    }
+    
+    public void kill() {
+        dead = true;
+    }
+    
+    public void act() {
+        xLoc = getX();
+        yLoc = getY();
+        
+        handleInput();
+        applyGravity();
+        handleMovement();
+        wrap();
+    }
+    
+    public boolean canBounce() {
+        return ySpeed >= 0;
+    }
+    
+    public void bounce(float force) {
+        ySpeed = -force;
+    }
+    
+    private void handleInput() {
+        boolean right = Greenfoot.isKeyDown("right");
+        boolean left = Greenfoot.isKeyDown("left");
+        boolean shooting = Greenfoot.isKeyDown("space");
+        
+        if (!(right ^ left))
+            xSpeed = 0.0f;
+        else if (right) {
+            xSpeed = Math.min(xSpeed + X_ACCEL, MAX_SPEED);
+            setImage(rightImage);
         }
-        if(canMove)
-            keys();
-
-        if(ys>11)
-            ys = 10;
-
-        setLocation(x+(int)xs, y+(int)ys);
-
-        gravity();
-        wrapAround();
-
-        if(canMove & y < 400)
-            scrollUp();
-
-        if(y>1600)
-            fall();
-        gameScreen.height = hits;
-
-        scout();
-    }
-
-
-
-    public void gravity()
-    {
-        //ys += 0.3f;
-        ys += .04f;
-    }
-
-        public void bounce()
-    {
-        ground Ground = (ground) getOneIntersectingObject(ground.class);
-        if(Ground != null & ys > 0)
-        {
-            ys = -5;
-        }
-    }
-
-        public void scrollUp()
-    {
-        if(y<=200 & y>100)
-        {
-            gameScreen.scrollSpeed = (int) -ys;
-            gameScreen.scroll = true;
-            hits++;
-        }
-        else if(y<=100)
-        {
-            gameScreen.scrollSpeed = (int) -ys*2;
-            gameScreen.scroll = true;
-            hits++;
-        }
-
-        else
-        {
-            gameScreen.scroll = false;
-        }
-    }
-
-    public void fall()
-    {
-        gameScreen.fall = true;
-        gameScreen.scrollSpeed = (int) -ys;
-    }
-
-    public void wrapAround()
-    {
-        if(x>1200)
-        {
-            setLocation(0, getY());
-        }
-        if(x<0)
-        {
-            setLocation(1200,getY());
+        else { // left
+            xSpeed = Math.max(xSpeed - X_ACCEL, -MAX_SPEED);
+            setImage(leftImage);
         }
         
-        //if(y > 800) {
-        //    setLocation(getX(), 0);
-        //}
-        
+        if (shooting) {
+            shootingStrategy.fire(this, true);
+            setImage(shootingImage);
+        }
     }
-
-    public void scout()
-    {
-
+    
+    private void applyGravity() {
+        ySpeed += GRAVITY;
     }
-
-    public void keys()
-    {
-        if(Greenfoot.isKeyDown("right"))
-        {
-            xs += 0.25f;
-            setImage(right);
-        }
-        if(Greenfoot.isKeyDown("left"))
-        {
-            xs -= 0.25f;
-            setImage(left);
-        }
-        if(!Greenfoot.isKeyDown("left") & !Greenfoot.isKeyDown("right") & xs != 0)
-        {
-            xs = 0;
-        }
-        if(Greenfoot.isKeyDown("space") & getWorld().getObjects(AbstractProjectile.class).isEmpty())
-        {
-            setImage(shooting);
-            getWorld().addObject(new AbstractProjectile(), x, y);
-        }
-        
-
+    
+    private void handleMovement() {
+        setLocation((int)(xLoc + xSpeed), (int)(yLoc + ySpeed));
+    }
+    
+    private void wrap() {
+        if (xLoc > GameWorld.WIDTH)
+            setLocation(10, yLoc);
+        else if (xLoc < 0)
+            setLocation(GameWorld.WIDTH - 10, yLoc);
     }
 }

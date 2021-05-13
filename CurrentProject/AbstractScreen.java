@@ -34,7 +34,9 @@ public abstract class AbstractScreen {
     /**
      * Clears the contents of the current screen
      */
-    public abstract void clear();
+    public void clear() {
+        world.removeObjects(world.getObjects(null));
+    }
     
     /**
      * Called every frame. Handles game logic

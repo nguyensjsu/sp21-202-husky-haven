@@ -1,32 +1,48 @@
 import greenfoot.*;
 
-public class AbstractProjectile extends Actor implements IProjectileShooter{
-
-	boolean removed;
-
-	public AbstractProjectile()
-	{
-	    removed = false;
-			//default ammo
-			//for now set image here, between fireball/ammo
-			setImage(new GreenfootImage("ammo.png"));
-	}
-
-	public void act()
-	{
-	    if(removed){return;}
-	    fireProjectile();
-	}
-
-	public void fireProjectile()
-	{
-	    if(getY()<=0)
-	    {
-	        removed = true;
-	        getWorld().removeObject(this);
-	        return;
-	    }
-	    setLocation(getX(), getY()-10);
-	}
-
+public abstract class AbstractProjectile extends AbstractSpawnable {
+    
+    protected boolean fromPlayer;
+    protected int lifespan;
+    protected int rotationDeg;
+    protected int speed;
+    
+    private long deathTime;
+    
+    
+    public AbstractProjectile(boolean fromPlayer, int lifespan, int rotationDeg, int speed) { // lifespan in milliseconds
+        this.fromPlayer = fromPlayer;
+        this.lifespan = lifespan;
+        this.rotationDeg = rotationDeg;
+        this.speed = speed;
+        
+        if (getImage() != null)
+            setRotation(this.rotationDeg);
+            
+        deathTime = System.currentTimeMillis() + lifespan;
+    }
+    
+    public void act() {
+        if (System.currentTimeMillis() >= deathTime) {
+            getWorld().removeObject(this);
+            return;
+        }
+        
+        move(speed);
+        
+        if (fromPlayer) {
+            if (isTouching(AbstractEnemy.class)) {
+                Actor enemy = getOneIntersectingObject(AbstractEnemy.class);
+                if (enemy != null)
+                    ((AbstractEnemy)enemy).kill();
+            }
+        }
+        else {
+            if (isTouching(Player.class)) {
+                Actor player = getOneIntersectingObject(Player.class);
+                if (player != null)
+                    ((Player)player).kill();
+            }
+        }
+    }    
 }

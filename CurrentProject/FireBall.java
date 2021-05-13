@@ -1,12 +1,6 @@
-import greenfoot.*;
-
-public class FireBall extends AbstractProjectile{
-
-  boolean removed;
-
-  public FireBall(){
-    removed = false;
-    setImage(new GreenfootImage("fireball.png"));
-  }
-
+public class Fireball extends AbstractProjectile {
+    
+    public Fireball(boolean fromPlayer, int rotationDeg) {
+        super(fromPlayer, 2000, rotationDeg, 10);
+    }
 }

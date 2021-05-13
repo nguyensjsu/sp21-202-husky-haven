@@ -3,39 +3,53 @@ import java.util.*;
 
 public class GameOverScreen extends AbstractScreen {
     
-    private List<Actor> actors;
+    private List<Button> buttons;
+    private ScoreDisplay lastScoreDisplay;
+    private ScoreDisplay highScoreDisplay;
     
     
     public GameOverScreen(GameWorld world) {
-        super(world, Color.RED);
+        super(world, Color.GRAY);
         
         int centerX = world.WIDTH / 2;
-        actors = Arrays.asList(
-            new Button("Reset", centerX, 700, 300, 75) {
+        buttons = Arrays.asList(
+            new Button("Try Again", centerX, 600, 300, 75) {
+                public void onClick() {
+                    world.setScreen(ScreenName.GAME);
+                }
+            },
+            new Button("Back to Menu", centerX, 700, 300, 75) {
                 public void onClick() {
                     world.setScreen(ScreenName.MENU);
                 }
             }
         );
+        
+        lastScoreDisplay = new ScoreDisplay("Final Score: ", 400, 50, 50);
+        highScoreDisplay = new ScoreDisplay("High Score: ", 400, 50, 50);
     }
     
     public void activate() {
         super.activate();
-        System.out.println("GameOverScreen");
         
-        world.setPaintOrder(Button.class);
-        for (Actor actor : actors)
-            world.addObject(actor, 0, 0);
+        world.setPaintOrder(ScoreDisplay.class, Button.class);
+        
+        lastScoreDisplay.updateScore(world.getLastScore());
+        highScoreDisplay.updateScore(world.getHighScore());
+        
+        int centerX = world.WIDTH / 2;
+        world.addObject(highScoreDisplay, world.WIDTH / 2, 200);
+        world.addObject(lastScoreDisplay, world.WIDTH / 2, 300);
+        
+        for (Button button : buttons)
+            world.addObject(button, 0, 0);
+            
+        
     }
     
     public void act() {
-        for (Actor actor : actors)
-            if (Greenfoot.mouseClicked(actor))
-                if (actor instanceof IClickable)
-                    ((IClickable)actor).onClick();
-    }
-    
-    public void clear() {
-        world.removeObjects(actors);
+        for (Button button : buttons)
+            if (Greenfoot.mouseClicked(button))
+                button.onClick();
     }
 }
