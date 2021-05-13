@@ -13,13 +13,17 @@ public class GameScreen extends AbstractScreen {
     private boolean isActive;
     private int scoreHeight;
     private GreenfootSound gameOverSound = new GreenfootSound("au.wav");
+    private GreenfootSound backgroundMusic;
 
     public GameScreen(GameWorld world) {
         super(world, Color.GRAY);
+        backgroundMusic = new GreenfootSound("game.mp3");
     }
 
     public void activate() {
         super.activate();
+        backgroundMusic.playLoop();
+        backgroundMusic.setVolume(8);
         world.setPaintOrder(ScoreDisplay.class,
             Player.class,
             AbstractPowerup.class,
@@ -44,6 +48,7 @@ public class GameScreen extends AbstractScreen {
 
         for (AbstractSpawner spawner : spawners)
             spawner.initialSpawn();
+
     }
 
     public void act() {
@@ -79,5 +84,6 @@ public class GameScreen extends AbstractScreen {
 
     public void endGame() {
         isActive = false;
+        backgroundMusic.setVolume(0);
     }
 }

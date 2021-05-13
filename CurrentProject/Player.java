@@ -10,13 +10,15 @@ public class Player extends Actor {
     private float xSpeed = 0.0f, ySpeed = 0.0f;
     private int xLoc = 0, yLoc = 0;
     private boolean dead = false;
+    private boolean collisionDeath = true;
+    private int timer = 0;
 
     private GreenfootImage leftImage = new GreenfootImage("doodler.png");
     private GreenfootImage rightImage = new GreenfootImage("doodler.png");
     private GreenfootImage shootingImage = new GreenfootImage("shooting.png");
+    private GreenfootImage shieldImage = new GreenfootImage("shield.jpg");
 
     private AbstractShootingStrategy shootingStrategy;
-
 
     public Player(GameWorld world) {
         leftImage.mirrorHorizontally();
@@ -34,7 +36,9 @@ public class Player extends Actor {
     }
 
     public void kill() {
-        dead = true;
+        if(collisionDeath){
+            dead = true;
+        }
     }
 
     public void act() {
@@ -45,6 +49,14 @@ public class Player extends Actor {
         applyGravity();
         handleMovement();
         wrap();
+        if(timer > -1) 
+            timer--;
+
+        if(timer == 0){
+            collisionDeath = true;
+            setImage(rightImage);
+        }
+
     }
 
     public boolean canBounce() {
@@ -63,6 +75,16 @@ public class Player extends Actor {
         return GRAVITY;
     }
 
+    public void setCollisionDeath(){
+        collisionDeath = false;
+        timer = 500;
+        setImage(shieldImage);
+    }
+
+    public boolean getCollisionDeath(){
+        return collisionDeath;
+    }
+
     private void handleInput() {
         boolean right = Greenfoot.isKeyDown("right");
         boolean left = Greenfoot.isKeyDown("left");
@@ -72,11 +94,13 @@ public class Player extends Actor {
             xSpeed = 0.0f;
         else if (right) {
             xSpeed = Math.min(xSpeed + X_ACCEL, MAX_SPEED);
-            setImage(rightImage);
+            if(collisionDeath)
+                setImage(rightImage);
         }
         else { // left
             xSpeed = Math.max(xSpeed - X_ACCEL, -MAX_SPEED);
-            setImage(leftImage);
+            if(collisionDeath)
+                setImage(leftImage);
         }
 
         if (shooting) {
