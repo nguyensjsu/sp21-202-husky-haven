@@ -1,4 +1,5 @@
 import greenfoot.*;
+//projectile sfx taken from zapsplat.com
 
 public abstract class AbstractProjectile extends AbstractSpawnable {
 
@@ -8,6 +9,7 @@ public abstract class AbstractProjectile extends AbstractSpawnable {
     protected int speed;
 
     private long deathTime;
+    //private GreenfootSound shot_sfx;
 
 
     public AbstractProjectile(boolean fromPlayer, int lifespan, int rotationDeg, int speed, String ammo) { // lifespan in milliseconds
@@ -19,8 +21,10 @@ public abstract class AbstractProjectile extends AbstractSpawnable {
         //set image ammo type
         if(ammo.equals("pellet")){
             setImage(new GreenfootImage("pellet.png"));
+            //shot_sfx = new GreenfootSound("pellet_shot.mp3");
         }else if(ammo.equals("fireball")){
             setImage(new GreenfootImage("fireball.png"));
+            //shot_sfx = new GreenfootSound("fireball_shot.mp3");
         }
 
         if (getImage() != null)

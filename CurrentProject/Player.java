@@ -19,6 +19,8 @@ public class Player extends Actor {
     private GreenfootImage shieldImage = new GreenfootImage("shield.jpg");
 
     private AbstractShootingStrategy shootingStrategy;
+    //private String projectile_type;
+    //private GreenfootSound shot_sfx;
 
     public Player(GameWorld world) {
         rightImage.mirrorHorizontally();
@@ -49,7 +51,7 @@ public class Player extends Actor {
         applyGravity();
         handleMovement();
         wrap();
-        if(timer > -1) 
+        if(timer > -1)
             timer--;
 
         if(timer == 0){
@@ -104,6 +106,16 @@ public class Player extends Actor {
         }
 
         if (shooting) {
+            //shot_sfx implementation
+            //problem: fire rate too high resulting in significant lag while playing music
+            //fix: reduce fire rate or relocate to shooting strat
+            /*projectile_type = shootingStrategy.getProjectileType();
+            if(projectile_type.equals("pellet"))
+                shot_sfx = new GreenfootSound("pellet_shot.mp3");
+            else
+                shot_sfx = new GreenfootSound("fireball_shot.mp3");
+            shot_sfx.setVolume(15);
+            shot_sfx.play();*/
             shootingStrategy.fire(this, true);
             setImage(shootingImage);
         }
