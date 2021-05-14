@@ -13,7 +13,6 @@ public class GameScreen extends AbstractScreen {
     private boolean isActive;
     private int scoreHeight;
     private GreenfootSound gameOverSound = new GreenfootSound("au.wav");
-    //private GreenfootSound backgroundMusic;
     private GreenfootSound backgroundMusic = new GreenfootSound("game.mp3");;
 
     public GameScreen(GameWorld world) {

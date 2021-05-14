@@ -3,7 +3,7 @@ import greenfoot.*;
 
 public class AbstractEnemy extends AbstractSpawnable {
 
-    private GreenfootSound death_sfx = new GreenfootSound("enemy_ded.mp3");
+    //private GreenfootSound death_sfx = new GreenfootSound("enemy_ded.mp3");
 
     public void wrap() {
         int x = getX();
@@ -15,8 +15,8 @@ public class AbstractEnemy extends AbstractSpawnable {
     }
 
     public void kill() {
-        death_sfx.setVolume(20);
-        death_sfx.play();
+        //death_sfx.setVolume(20);
+        //death_sfx.play();
         getWorld().removeObject(this);
     }
 }
