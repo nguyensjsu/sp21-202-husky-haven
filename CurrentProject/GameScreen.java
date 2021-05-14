@@ -20,13 +20,15 @@ public class GameScreen extends AbstractScreen {
         super(world, new GreenfootImage("background.jpg"));
         //world.setBackground(new GreenfootImage("background.jpg"));
         //backgroundMusic = new GreenfootSound("game.mp3");
+        //initial play on menuscreen?
+        backgroundMusic.setVolume(25);
         backgroundMusic.playLoop();
     }
 
     public void activate() {
         super.activate();
         backgroundMusic.playLoop();
-        backgroundMusic.setVolume(8);
+        backgroundMusic.setVolume(10);
         world.setPaintOrder(ScoreDisplay.class,
             Player.class,
             AbstractPowerup.class,
@@ -61,6 +63,7 @@ public class GameScreen extends AbstractScreen {
 
         if (!isActive) {
             world.setLastScore(scoreHeight);
+            gameOverSound.setVolume(50);
             gameOverSound.play();
             world.setScreen(ScreenName.GAME_OVER);
             return;

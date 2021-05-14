@@ -7,11 +7,12 @@ public class GameOverScreen extends AbstractScreen {
     private List<Button> buttons;
     private ScoreDisplay lastScoreDisplay;
     private ScoreDisplay highScoreDisplay;
-    private GreenfootSound gameOverSound = new GreenfootSound("game_over_trombone.wav");
+    private GreenfootSound gameOverBGM = new GreenfootSound("game_over_trombone.wav");
 
 
     public GameOverScreen(GameWorld world) {
-        super(world, Color.GRAY);
+        //super(world, Color.GRAY);
+        super(world, new GreenfootImage("gameover.png"));
 
         int centerX = world.WIDTH / 2;
         buttons = Arrays.asList(
@@ -27,14 +28,15 @@ public class GameOverScreen extends AbstractScreen {
             }
         );
 
-        lastScoreDisplay = new ScoreDisplay("Final Score: ", 400, 50, 50);
+        lastScoreDisplay = new ScoreDisplay("Final Score: ", 400, 300, 50);
         highScoreDisplay = new ScoreDisplay("High Score: ", 400, 50, 50);
     }
 
     public void activate() {
         super.activate();
 
-        gameOverSound.play();
+        gameOverBGM.setVolume(30);
+        gameOverBGM.play();
 
         world.setPaintOrder(ScoreDisplay.class, Button.class);
 

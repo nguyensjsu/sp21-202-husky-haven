@@ -12,6 +12,7 @@ public class WoodPlatform extends AbstractPlatform {
   public void onBounce() {
       //play only once
       if(hasPlayed == false){
+          soundSound.setVolume(75);
           soundSound.play();
           hasPlayed = true;
       }
