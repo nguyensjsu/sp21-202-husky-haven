@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class WoodPlatform extends AbstractPlatform {
   //wood break sound effect taken from zapsplat.com
-  private GreenfootSound soundSound = new GreenfootSound("wood_break.wav");
+  private GreenfootSound platformBreak = new GreenfootSound("wood_break.wav");
   private boolean hasPlayed = false;
 
   public WoodPlatform(float bounceForce) {
@@ -12,8 +12,8 @@ public class WoodPlatform extends AbstractPlatform {
   public void onBounce() {
       //play only once
       if(hasPlayed == false){
-          soundSound.setVolume(75);
-          soundSound.play();
+          platformBreak.setVolume(75);
+          platformBreak.play();
           hasPlayed = true;
       }
       setImage(new GreenfootImage("broken_platform.png"));
