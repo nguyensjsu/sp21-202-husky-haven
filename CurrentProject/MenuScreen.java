@@ -5,9 +5,8 @@ public class MenuScreen extends AbstractScreen {
     
     private List<Button> buttons;
     
-    
     public MenuScreen(GameWorld world) {
-        super(world, Color.GRAY);
+        super(world, new GreenfootImage("home.jpg"));
         
         int centerX = world.WIDTH / 2;
         buttons = Arrays.asList(

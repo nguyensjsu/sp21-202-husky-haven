@@ -6,7 +6,7 @@ public class PowerupSpawner extends AbstractSpawner {
     private FirePowerup firePowerup = new FirePowerup();
     private BalloonPowerup balloonPowerup = new BalloonPowerup();
     private DoodleShield doodleShield = new DoodleShield();
-    private AbstractPowerup powerups[] = {featherPowerup, firePowerup, balloonPowerup, doodleShield}; 
+    private AbstractPowerup powerups[] = {featherPowerup};//, firePowerup, balloonPowerup, doodleShield}; 
     public PowerupSpawner(GameWorld world) {
         super(world, 200, 50);
     }

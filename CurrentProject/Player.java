@@ -13,15 +13,15 @@ public class Player extends Actor {
     private boolean collisionDeath = true;
     private int timer = 0;
 
-    private GreenfootImage leftImage = new GreenfootImage("doodler.png");
-    private GreenfootImage rightImage = new GreenfootImage("doodler.png");
-    private GreenfootImage shootingImage = new GreenfootImage("shooting.png");
+    private GreenfootImage leftImage = new GreenfootImage("husky.png");
+    private GreenfootImage rightImage = new GreenfootImage("husky.png");
+    private GreenfootImage shootingImage = new GreenfootImage("husky.png");
     private GreenfootImage shieldImage = new GreenfootImage("shield.jpg");
 
     private AbstractShootingStrategy shootingStrategy;
 
     public Player(GameWorld world) {
-        leftImage.mirrorHorizontally();
+        rightImage.mirrorHorizontally();
         shootingImage.scale(30, 40);
 
         setShootingStrategy(new DefaultShootingStrategy(world));

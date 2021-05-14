@@ -16,7 +16,8 @@ public class GameScreen extends AbstractScreen {
     private GreenfootSound backgroundMusic;
 
     public GameScreen(GameWorld world) {
-        super(world, Color.GRAY);
+        super(world, new GreenfootImage("background.jpg"));
+        //world.setBackground(new GreenfootImage("background.jpg"));
         backgroundMusic = new GreenfootSound("game.mp3");
     }
 
