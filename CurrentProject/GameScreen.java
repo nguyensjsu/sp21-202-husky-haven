@@ -13,12 +13,14 @@ public class GameScreen extends AbstractScreen {
     private boolean isActive;
     private int scoreHeight;
     private GreenfootSound gameOverSound = new GreenfootSound("au.wav");
-    private GreenfootSound backgroundMusic;
+    //private GreenfootSound backgroundMusic;
+    private GreenfootSound backgroundMusic = new GreenfootSound("game.mp3");;
 
     public GameScreen(GameWorld world) {
         super(world, new GreenfootImage("background.jpg"));
         //world.setBackground(new GreenfootImage("background.jpg"));
-        backgroundMusic = new GreenfootSound("game.mp3");
+        //backgroundMusic = new GreenfootSound("game.mp3");
+        backgroundMusic.playLoop();
     }
 
     public void activate() {
@@ -85,6 +87,7 @@ public class GameScreen extends AbstractScreen {
 
     public void endGame() {
         isActive = false;
-        backgroundMusic.setVolume(0);
+        //backgroundMusic.setVolume(0);
+        backgroundMusic.pause();
     }
 }
