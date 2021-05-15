@@ -20,8 +20,8 @@ public class GameScreen extends AbstractScreen {
         //world.setBackground(new GreenfootImage("background.jpg"));
         //backgroundMusic = new GreenfootSound("game.mp3");
         //initial play on menuscreen?
-        backgroundMusic.setVolume(25);
-        backgroundMusic.playLoop();
+        //backgroundMusic.setVolume(25);
+        //backgroundMusic.playLoop();
     }
 
     public void activate() {
@@ -35,7 +35,7 @@ public class GameScreen extends AbstractScreen {
             Platform.class,
             AbstractEnemy.class);
 
-        scoreDisplay = new ScoreDisplay("Score: ", 150, 20, 20);
+        scoreDisplay = new ScoreDisplay("Score: ", 150, 20, 20, "game");
         world.addObject(scoreDisplay, 525, 770);
 
         isActive = true;
@@ -90,6 +90,6 @@ public class GameScreen extends AbstractScreen {
     public void endGame() {
         isActive = false;
         //backgroundMusic.setVolume(0);
-        backgroundMusic.pause();
+        backgroundMusic.stop();
     }
 }

@@ -5,6 +5,7 @@ public class MenuScreen extends AbstractScreen {
 
     private List<Button> buttons;
     //private GreenfootSound menu_bgm = new GreenfootSound("game.mp3");
+    private ScoreDisplay menu;
 
     public MenuScreen(GameWorld world) {
         super(world, new GreenfootImage("home.jpg"));
@@ -22,6 +23,8 @@ public class MenuScreen extends AbstractScreen {
                 }
             }
         );
+
+        menu = new ScoreDisplay("Husky's Haven", 400, 300, 40, "menu");
     }
 
     public void activate() {
@@ -31,6 +34,7 @@ public class MenuScreen extends AbstractScreen {
         //menu_bgm.playLoop();
 
         world.setPaintOrder(Button.class);
+        world.addObject(menu, world.WIDTH / 2 + 50, 25);
         for (Button button : buttons)
             world.addObject(button, 0, 0);
     }

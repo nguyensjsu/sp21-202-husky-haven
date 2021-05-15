@@ -28,8 +28,8 @@ public class GameOverScreen extends AbstractScreen {
             }
         );
 
-        lastScoreDisplay = new ScoreDisplay("Final Score: ", 400, 300, 40);
-        highScoreDisplay = new ScoreDisplay("High Score: ", 400, 50, 40);
+        lastScoreDisplay = new ScoreDisplay("Final Score: ", 400, 300, 40, "gameover");
+        highScoreDisplay = new ScoreDisplay("High Score: ", 400, 50, 40, "gameover");
     }
 
     public void activate() {
