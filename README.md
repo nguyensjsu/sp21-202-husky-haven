@@ -14,7 +14,8 @@ For our project, we decided to create a single-player game using the Java-based 
 * Benoit Yen
     * Benoit's Contribution
 * Deepak Vellore Karunamoorthy
-    * Deepak's Contribution
+   * Implementation of Power ups(Shield) and enemies with images.
+   * Added game music and updated class diagram.
 
 ## Project Summary
 Similar to the original Doodle Jump, the objective of our game is to bounce upward on randomly generated platforms in order to get as high as possible until the player either misses a platform (and falls off the screen) or collides with an enemy. During gameplay, the player character can be controlled in its horizontal movement via the left / right arrow keys and can fire projectiles upward by pressing or holding the spacebar. Every time the player character bounces from a platform and reaches the top of the screen, the screen and all of the other Actors will scroll vertically to simulate a continuous and infinite level. If a projectile fired by the player collides with an enemy, that enemy will be eliminated from the game and will no longer be a threat to the player. The player can also pick up powerups in the world that change how the player acts, such as making them temporarily invulnerable to enemies or upgrading their firepower.
