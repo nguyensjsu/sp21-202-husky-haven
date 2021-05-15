@@ -16,7 +16,7 @@ public class Player extends Actor {
     private GreenfootImage leftImage = new GreenfootImage("husky.png");
     private GreenfootImage rightImage = new GreenfootImage("husky.png");
     private GreenfootImage shootingImage = new GreenfootImage("husky.png");
-    private GreenfootImage shieldImage = new GreenfootImage("shield.jpg");
+    private GreenfootImage shieldImage = new GreenfootImage("husky.png");
 
     private AbstractShootingStrategy shootingStrategy;
     //private String projectile_type;

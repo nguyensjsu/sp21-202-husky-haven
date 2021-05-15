@@ -12,7 +12,6 @@ public abstract class AbstractProjectile extends AbstractSpawnable {
     //private GreenfootSound shot_sfx;
     private GreenfootSound death_sfx = new GreenfootSound("enemy_ded.mp3");
 
-
     public AbstractProjectile(boolean fromPlayer, int lifespan, int rotationDeg, int speed, String ammo) { // lifespan in milliseconds
         this.fromPlayer = fromPlayer;
         this.lifespan = lifespan;
@@ -47,8 +46,8 @@ public abstract class AbstractProjectile extends AbstractSpawnable {
                 Actor enemy = getOneIntersectingObject(AbstractEnemy.class);
                 if (enemy != null)
                     death_sfx.setVolume(20);
-                    death_sfx.play();
-                    ((AbstractEnemy)enemy).kill();
+                death_sfx.play();
+                ((AbstractEnemy)enemy).kill();
             }
         }
         else {

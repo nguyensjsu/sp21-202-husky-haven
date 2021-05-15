@@ -1,5 +1,4 @@
 import greenfoot.*;
-//sfx from zapsplat.com
 
 public class Platform extends AbstractPlatform {
     private GreenfootSound reg_boing = new GreenfootSound("reg_boing.mp3");

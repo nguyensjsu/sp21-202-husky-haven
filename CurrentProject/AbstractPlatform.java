@@ -6,7 +6,6 @@ public abstract class AbstractPlatform extends AbstractSpawnable {
     protected boolean isDestroyed;
     protected boolean goThrough;
 
-
     public AbstractPlatform(float bounceForce) {
         this.bounceForce = bounceForce;
         this.isDestroyed = false;
