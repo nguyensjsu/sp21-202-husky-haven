@@ -16,15 +16,19 @@ public class Player extends Actor {
     private GreenfootImage leftImage = new GreenfootImage("husky.png");
     private GreenfootImage rightImage = new GreenfootImage("husky.png");
     private GreenfootImage shootingImage = new GreenfootImage("husky.png");
-    private GreenfootImage shieldImage = new GreenfootImage("husky.png");
+    
+    private GreenfootImage shieldLeftImage = new GreenfootImage("husky-shield.png");
+    private GreenfootImage shieldRightImage = new GreenfootImage("husky-shield.png");
+    private GreenfootImage shieldShootImage = new GreenfootImage("husky-shield.png");
 
     private AbstractShootingStrategy shootingStrategy;
-    //private String projectile_type;
-    //private GreenfootSound shot_sfx;
 
     public Player(GameWorld world) {
         rightImage.mirrorHorizontally();
-        shootingImage.scale(30, 40);
+        shootingImage.scale(20, 40);
+        
+        shieldRightImage.mirrorHorizontally();
+        shieldShootImage.scale(20, 40);
 
         setShootingStrategy(new DefaultShootingStrategy(world));
     }
@@ -80,7 +84,7 @@ public class Player extends Actor {
     public void setCollisionDeath(){
         collisionDeath = false;
         timer = 500;
-        setImage(shieldImage);
+        setImage(shieldRightImage);
     }
 
     public boolean getCollisionDeath(){
@@ -97,33 +101,29 @@ public class Player extends Actor {
             xSpeed = 0.0f;
         else if (right) {
             xSpeed = Math.min(xSpeed + X_ACCEL, MAX_SPEED);
-            if(collisionDeath)
+            if (collisionDeath)
                 setImage(rightImage);
+            else
+                setImage(shieldRightImage);
         }
         else { // left
             xSpeed = Math.max(xSpeed - X_ACCEL, -MAX_SPEED);
-            if(collisionDeath)
+            if (collisionDeath)
                 setImage(leftImage);
+            else
+                setImage(shieldLeftImage);
         }
 
         if (shooting) {
-            //shot_sfx implementation
-            //problem: fire rate too high resulting in significant lag while playing music
-            //fix: reduce fire rate or relocate to shooting strat
-            /*projectile_type = shootingStrategy.getProjectileType();
-            if(projectile_type.equals("pellet"))
-                shot_sfx = new GreenfootSound("pellet_shot.mp3");
-            else
-                shot_sfx = new GreenfootSound("fireball_shot.mp3");
-            shot_sfx.setVolume(15);
-            shot_sfx.play();*/
             shootingStrategy.fire(this, true);
-            setImage(shootingImage);
+            if (collisionDeath)
+                setImage(shootingImage);
+            else
+                setImage(shieldShootImage);
         }
 
-        if(pause){
-          Greenfoot.stop();
-        }
+        if (pause)
+            Greenfoot.stop();
     }
 
     public float getYSpeed() {

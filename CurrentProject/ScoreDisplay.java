@@ -19,7 +19,7 @@ public class ScoreDisplay extends Actor {
         if(screen.equals("gameover") || screen.equals("game"))
             scoreImage.setColor(Color.WHITE);
         else
-            scoreImage.setColor(Color.GREEN);
+            scoreImage.setColor(Color.BLACK);
         updateScore(0);
     }
 
