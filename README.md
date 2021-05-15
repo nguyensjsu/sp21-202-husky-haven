@@ -64,7 +64,7 @@ https://prezi.com/v/se7wcepe3s2i/doodle-jump-variation/
 Our Demo video can be found here:
 
 ---
-##Assets
+## Assets
 
 <ul>
    <li>Feather Powerup - https://image.flaticon.com/icons/png/512/3013/3013230.png</li>
