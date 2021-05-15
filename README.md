@@ -45,7 +45,15 @@ One of the most important design considerations we had was how to progressively 
 <br/><br/>
 
 ### Platforms
-Platform desc
+The game spawns four kinds of Platforms : Wood, Cloud , Ground and Regular.
+
+Wood : The Wood Platform allows the Doodler to jump on it once before it breaks and thus is only a temporary haven. 
+
+Cloud : The Cloud Platform lets you pass through with faster speeds.
+
+Ground : The Ground Platform allows you to bounce with a medium speed onto the next platform.
+
+
 <br/><br/>
 
 ### Enemies
