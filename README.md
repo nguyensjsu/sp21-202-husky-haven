@@ -14,7 +14,7 @@ For our project, we decided to create a single-player game using the Java-based 
 * Benoit Yen
     * Benoit's Contribution
 * Deepak Vellore Karunamoorthy
-   * Implementation of Power ups(Invinciblity) and enemies with images.
+   * Implementation of Power ups (Invinciblity) and enemies with images.
    * Updated the Player to accomodate the invincibility power.
    * Added game music and updated class diagram.
 
