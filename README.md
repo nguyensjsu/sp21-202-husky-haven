@@ -8,7 +8,9 @@ For our project, we decided to create a single-player game using the Java-based 
     * Overall System Design
     * Implementation of GameWorld, Screens, Buttons, Spawners, Player, Shooting Strategies, Projectiles, Powerups (Fire Powerup), Enemies, Platforms (Platform, Ground Platform, Cloud Platform)
 * Kevin Duong
-    * Kevin's Contribution
+    * Implementation of GameScreen, Player, Initial Platform, Feather Powerup, Balloon Powerup
+    * Background Images, Husky model
+    * One minute User story video 
 * Benoit Yen
     * Benoit's Contribution
 * Deepak Vellore Karunamoorthy
