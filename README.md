@@ -51,7 +51,7 @@ Wood : The Wood Platform allows the Doodler to jump on it once before it breaks 
 
 Cloud : The Cloud Platform lets you pass through with faster speeds.
 
-Ground : The Ground Platform allows you to bounce with a medium speed onto the next platform.
+Regular : The Regular  Platform allows you to bounce with a medium speed onto the next platform.
 
 
 <br/><br/>
