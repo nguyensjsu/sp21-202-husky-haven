@@ -91,6 +91,7 @@ public class Player extends Actor {
         boolean right = Greenfoot.isKeyDown("right");
         boolean left = Greenfoot.isKeyDown("left");
         boolean shooting = Greenfoot.isKeyDown("space");
+        boolean pause = Greenfoot.isKeyDown("p");
 
         if (!(right ^ left))
             xSpeed = 0.0f;
@@ -118,6 +119,10 @@ public class Player extends Actor {
             shot_sfx.play();*/
             shootingStrategy.fire(this, true);
             setImage(shootingImage);
+        }
+
+        if(pause){
+          Greenfoot.stop();
         }
     }
 
