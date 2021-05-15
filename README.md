@@ -59,8 +59,8 @@ Regular : The Regular  Platform allows you to bounce with a medium speed onto th
 
 ### Powerups
 
-* Balloon Powerup: Husky rises like a baloon upon jumping on a platform for 5 seconds. (Removes gravity being applied and reduces the speed player rises for X amount of time)
-* Feather Powerup: Husky floats like a feather for 5 seconds. (Reduces the gravity being applied to player for X amount of time)
+* Balloon Powerup: Husky rises like a baloon upon jumping on a platform for 5 seconds. (Removes gravity being applied and reduces the speed player rises for 5 amount of time)
+* Feather Powerup: Husky floats like a feather for 5 seconds. (Reduces the gravity being applied to player for 5 amount of time)
 * Fireball Powerup: Husky can kill the enemies by pressing the spacebar which will inject the fireballs in the gameworld.
 * Invincibility Powerup: Shield the Husky from getting killed by the enemies for 5 seconds.
 
