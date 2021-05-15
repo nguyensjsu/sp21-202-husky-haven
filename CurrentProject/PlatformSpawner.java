@@ -38,12 +38,12 @@ public class PlatformSpawner extends AbstractSpawner {
         else
             return new CloudPlatform(12.0f);*/
 
-        //50% regular, 30% cloud, 20% wood
-        if (rand <= 5)
+        //60% regular, 30% cloud, 10% wood
+        if (rand <= 6)
             return new Platform(10.0f);
-        else if (rand > 5 && rand <= 8)
+        else if (rand > 6 && rand <= 9)
             return new CloudPlatform(12.0f);
         else
-            return new WoodPlatform(0.0f);
+            return new WoodPlatform(5.0f);
     }
 }
