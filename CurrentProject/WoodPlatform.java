@@ -12,7 +12,7 @@ public class WoodPlatform extends AbstractPlatform {
   public void onBounce() {
       //play only once
       if(hasPlayed == false){
-          platformBreak.setVolume(75);
+          platformBreak.setVolume(60);
           platformBreak.play();
           hasPlayed = true;
       }

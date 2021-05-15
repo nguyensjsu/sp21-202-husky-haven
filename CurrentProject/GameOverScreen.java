@@ -35,7 +35,7 @@ public class GameOverScreen extends AbstractScreen {
     public void activate() {
         super.activate();
 
-        gameOverBGM.setVolume(30);
+        gameOverBGM.setVolume(20);
         gameOverBGM.play();
 
         world.setPaintOrder(ScoreDisplay.class, Button.class);
