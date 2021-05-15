@@ -56,9 +56,6 @@ Regular : The Regular  Platform allows you to bounce with a medium speed onto th
 
 <br/><br/>
 
-### Enemies
-Enemies desc
-<br/><br/>
 
 ### Powerups
 
