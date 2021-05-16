@@ -1,10 +1,10 @@
 import greenfoot.*;
 
-
 public class PlatformSpawner extends AbstractSpawner {
 
     private final int MAX_PLATFORMS = 12;
 
+    
     public PlatformSpawner(GameWorld world) {
         super(world, 100, 100);
     }
@@ -31,17 +31,11 @@ public class PlatformSpawner extends AbstractSpawner {
     }
 
     public AbstractSpawnable getRandomSpawnable() {
-        //int rand = Greenfoot.getRandomNumber(10);
-        int rand = Greenfoot.getRandomNumber(11);
-        /*if (rand <= 5)
+        int rand = Greenfoot.getRandomNumber(10);
+        
+        if (rand < 6)
             return new Platform(10.0f);
-        else
-            return new CloudPlatform(12.0f);*/
-
-        //60% regular, 30% cloud, 10% wood
-        if (rand <= 6)
-            return new Platform(10.0f);
-        else if (rand > 6 && rand <= 9)
+        else if (rand < 9)
             return new CloudPlatform(12.0f);
         else
             return new WoodPlatform(5.0f);
