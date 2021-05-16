@@ -12,7 +12,9 @@ For our project, we decided to create a single-player game using the Java-based 
     * Background Images, Husky model
     * One minute User story video 
 * Benoit Yen
-    * Benoit's Contribution
+    * Implementation of initial Projectile classes, Wood Platform class
+    * Addition of most sound effects (all platforms, all projectiles, enemy death) and background music (game bgm, gameover bgm)
+    * Team Project presentation + demonstration video
 * Deepak Vellore Karunamoorthy
    * Implementation of Power ups (Invinciblity) and enemies with images
    * Updated the Player to accomodate the invincibility power
