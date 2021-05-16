@@ -24,7 +24,7 @@ public class MenuScreen extends AbstractScreen {
             }
         );
 
-        menu = new ScoreDisplay("Husky Haven", 400, 300, 40, "menu");
+        menu = new ScoreDisplay("Husky Haven", 400, 300, 50, "menu");
     }
 
     public void activate() {

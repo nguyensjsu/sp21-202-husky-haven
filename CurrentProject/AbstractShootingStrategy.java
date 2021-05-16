@@ -15,7 +15,7 @@ public abstract class AbstractShootingStrategy {
     public void fire(Actor shooter, boolean fromPlayer) {
         long now = System.currentTimeMillis();
 
-        if (now >= nextShot) {
+        if (now >= nextShot && shooter != null) {
             handleShooting(shooter, fromPlayer);
             nextShot = now + cooldown;
         }

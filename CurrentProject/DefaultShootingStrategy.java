@@ -13,9 +13,6 @@ public class DefaultShootingStrategy extends AbstractShootingStrategy {
         pellet_sfx.setVolume(25);
         pellet_sfx.play();
         
-        if (shooter == null)
-            return;
-        
         Pellet p = new Pellet(fromPlayer, 270);
         world.addObject(p, shooter.getX(), shooter.getY() - shooter.getImage().getHeight());
     }
