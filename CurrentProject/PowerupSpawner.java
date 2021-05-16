@@ -3,7 +3,7 @@ import greenfoot.*;
 public class PowerupSpawner extends AbstractSpawner {
 
     public PowerupSpawner(GameWorld world) {
-        super(world, 200, 50);
+        super(world, 500, 50);
     }
     
     public AbstractSpawnable getRandomSpawnable() {

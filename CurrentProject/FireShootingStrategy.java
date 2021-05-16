@@ -13,6 +13,13 @@ public class FireShootingStrategy extends AbstractShootingStrategy {
         fireball_sfx.setVolume(25);
         fireball_sfx.play();
         
+        if (world == null) {
+            if (shooter == null)
+                return;
+            else
+                world = shooter.getWorld();
+        }
+        
         for (int i = 0; i < 3; i++) {
             Fireball fb = new Fireball(fromPlayer, 250 + 20 * i);
             world.addObject(fb, shooter.getX() - 1 + i, shooter.getY() - shooter.getImage().getHeight());
