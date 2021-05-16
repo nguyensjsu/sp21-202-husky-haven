@@ -14,9 +14,8 @@ For our project, we decided to create a single-player game using the Java-based 
 * Benoit Yen
     * Benoit's Contribution
 * Deepak Vellore Karunamoorthy
-   * Implementation of Power ups (Invinciblity) and enemies with images.
-   * Updated the Player to accomodate the invincibility power.
-   * Added game music and updated class diagram.
+   * Implementation of Power ups (Invinciblity) and enemies with images
+   * Updated the Player to accomodate the invincibility power
 
 ## Project Summary
 Similar to the original Doodle Jump, the objective of our game is to bounce upward on randomly generated platforms in order to get as high as possible until the player either misses a platform (and falls off the screen) or collides with an enemy. During gameplay, the player character can be controlled in its horizontal movement via the left / right arrow keys and can fire projectiles upward by pressing or holding the spacebar. Every time the player character bounces from a platform and reaches the top of the screen, the screen and all of the other Actors will scroll vertically to simulate a continuous and infinite level. If a projectile fired by the player collides with an enemy, that enemy will be eliminated from the game and will no longer be a threat to the player. The player can also pick up powerups in the world that change how the player acts, such as making them temporarily invulnerable to enemies or upgrading their firepower.
@@ -45,30 +44,31 @@ One of the most important design considerations we had was how to progressively 
 <br/><br/>
 
 ### Platforms
-The game spawns four kinds of Platforms : Wood, Cloud , Ground and Regular.
-
-Wood : The Wood Platform allows the Doodler to jump on it once before it breaks and thus is only a temporary haven. 
-
-Cloud : The Cloud Platform lets you pass through with faster speeds.
-
-Regular : The Regular  Platform allows you to bounce with a medium speed onto the next platform.
-
-
+Our game has four kinds of platforms:
+* Regular: The regular platform allows you to bounce with a medium height onto the next platform.
+* Ground: The ground platform is the same as the regular platform but is spawned at the bottom of the starting screen only.
+* Wood: The wood platform allows one very small bounce before it breaks and cannot be used again.
+* Cloud: The cloud platform is also a one-use platform but allows a much larger bounce.
 <br/><br/>
 
-
 ### Powerups
-
+Our game has four powerups:
 * Balloon Powerup: Husky rises like a baloon upon jumping on a platform for 5 seconds. (Removes gravity being applied and reduces the speed player rises for 5 amount of time)
 * Feather Powerup: Husky floats like a feather for 5 seconds. (Reduces the gravity being applied to player for 5 amount of time)
 * Fireball Powerup: Husky can kill the enemies by pressing the spacebar which will inject the fireballs in the gameworld.
 * Invincibility Powerup: Shield the Husky from getting killed by the enemies for 5 seconds.
+<br/><br/>
+
+### Enemies
+Our game has two enemies:
+* Wiggler: The Wiggler jitters around randomly but does not move outside of its local area.
+* Mover: The Mover traverses the screen horizontally (wrapping around when hitting the edge) at random speeds.
+<br/><br/>
 
 ---
 ## Videos
 ### User Story Video
-Our User Story Ad video can be found here: 
-https://prezi.com/v/se7wcepe3s2i/doodle-jump-variation/
+Our User Story Ad video can be found here: https://prezi.com/v/se7wcepe3s2i/doodle-jump-variation/
 
 ### Demo Video
 Our Demo video can be found here:
@@ -76,8 +76,6 @@ Our Demo video can be found here:
 ---
 ## Assets
 
-<ul>
-   <li>Feather Powerup - https://image.flaticon.com/icons/png/512/3013/3013230.png</li>
-   <li>Home WallPaper - http://hdlatestwallpaper.com/wp-content/uploads/2017/07/Cartoon-garden-HD-wallpaper.jpg</li>
-   <li>Husky (photoshopped to remove background image and resized) - https://cdn.imgbin.com/13/14/0/imgbin-siberian-husky-puppy-saarloos-wolfdog-drawing-mean-dog-black-and-white-dog-illustration-3h32g0sBAu2USPD8NG1y0Zx9Q.jpg</li>
-</ul>
+* Feather Powerup - https://image.flaticon.com/icons/png/512/3013/3013230.png
+* Home WallPaper - http://hdlatestwallpaper.com/wp-content/uploads/2017/07/Cartoon-garden-HD-wallpaper.jpg
+* Husky (photoshopped to remove background image and resized) - https://cdn.imgbin.com/13/14/0/imgbin-siberian-husky-puppy-saarloos-wolfdog-drawing-mean-dog-black-and-white-dog-illustration-3h32g0sBAu2USPD8NG1y0Zx9Q.jpg
