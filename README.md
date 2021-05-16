@@ -85,4 +85,4 @@ Our Demo video can be found here: https://youtu.be/Y0hh7G4Jq5I
 * Home WallPaper - http://hdlatestwallpaper.com/wp-content/uploads/2017/07/Cartoon-garden-HD-wallpaper.jpg
 * Husky (photoshopped to remove background image and resized) - https://cdn.imgbin.com/13/14/0/imgbin-siberian-husky-puppy-saarloos-wolfdog-drawing-mean-dog-black-and-white-dog-illustration-3h32g0sBAu2USPD8NG1y0Zx9Q.jpg
 * Gameover Screen - https://www.pixilart.com/art/game-over-screen-ebcdb77d7128b3f
-* Assorted SFX and GameScreen BGM - https://www.zapsplat.com/
+* Assorted SFX, Game BGM, and Gameover BGM - https://www.zapsplat.com/
