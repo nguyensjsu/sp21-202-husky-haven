@@ -1,5 +1,6 @@
 import greenfoot.*;
 import java.util.*;
+//BGM from zapsplat.com
 
 public class GameScreen extends AbstractScreen {
 
@@ -13,6 +14,7 @@ public class GameScreen extends AbstractScreen {
     private boolean isActive;
     private int scoreHeight;
     private GreenfootSound gameOverSound = new GreenfootSound("au.wav");
+    private GreenfootSound backgroundMusic = new GreenfootSound("game_bgm.mp3");;
 
     public GameScreen(GameWorld world) {
         super(world, new GreenfootImage("background.jpg"));
@@ -20,6 +22,8 @@ public class GameScreen extends AbstractScreen {
 
     public void activate() {
         super.activate();
+        backgroundMusic.playLoop();
+        backgroundMusic.setVolume(15);
         world.setPaintOrder(ScoreDisplay.class,
             Player.class,
             AbstractPowerup.class,
@@ -81,5 +85,6 @@ public class GameScreen extends AbstractScreen {
 
     public void endGame() {
         isActive = false;
+        backgroundMusic.stop();
     }
 }
