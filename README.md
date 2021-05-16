@@ -76,7 +76,7 @@ Our game has two enemies:
 Our User Story Ad video can be found here: https://prezi.com/v/se7wcepe3s2i/doodle-jump-variation/
 
 ### Demo Video
-Our Demo video can be found here:
+Our Demo video can be found here: https://youtu.be/Y0hh7G4Jq5I
 
 ---
 ## Assets
